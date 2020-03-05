@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Restaurants extends Component {
+  addRestaurant = restaurant => {
+    this.props.addRestaurant(restaurant)
+  }
 
   render() {
 
@@ -21,4 +24,10 @@ const mapStateToProps = state => {
   return { restaurants: state.restaurants }
 }
 
-export default connect(mapStateToProps)(Restaurants);
+const mapDispatchToProps = dispatch => {
+  return {
+    addRestaurant: (restaurant) => dispatch(addRestaurant(restaurant))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Restaurants);
